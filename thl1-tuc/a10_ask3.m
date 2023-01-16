@@ -1,0 +1,28 @@
+sigWI =Ts*conv(XnoiseI,f1);
+sigWQ = Ts*conv(XnoiseQ,f1);
+tconvsig = linspace(min(timeconv)+min(t1), max(timeconv)+max(t1),length(sigWI));
+figure;
+subplot(2,1,1);
+plot(tconvsig, sigWI);
+title('QI Clean');
+ylabel('XI(t)');
+xlabel('Time axis');
+subplot(2,1,2);
+plot(tconvsig, sigWQ);
+title('XQ Clean');
+ylabel('XQ(t)');
+xlabel('Time axis');
+PXYI = ((abs(fftshift(fft(sigWI,Nf))).^2)*Ts)./(length(tconvsig)*Ts);
+PXYQ = ((abs(fftshift(fft(sigWQ,Nf))).^2)*Ts)./(length(tconvsig)*Ts);
+
+figure;
+subplot(2,1,1);
+semilogy(thz, PXYI);
+title('Periodogram of XI using semilogy');
+xlabel('Frequency axis');
+ylabel('XI');
+subplot(2,1,2);
+semilogy(thz, PXYQ);
+title('Periodogram of XQ using semilogy');
+xlabel('Frequency axis');
+ylabel('XQ');

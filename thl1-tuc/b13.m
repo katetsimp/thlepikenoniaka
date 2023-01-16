@@ -1,0 +1,12 @@
+integral1= sum(f1.*f1)*Ts;
+integral2= sum(f2.*f2)*Ts;
+integral3= sum(f3.*f3)*Ts;
+integrala1= sum(f1.*p1a)*Ts;
+integrala2= sum(f2.*p2a)*Ts;
+integrala3= sum(f3.*p3a)*Ts;
+integralb1= sum(f1.*p1b)*Ts;
+integralb2= sum(f2.*p2b)*Ts;
+integralb3= sum(f3.*p3b)*Ts;
+integralc1= sum(f1.*p1c)*Ts;
+integralc2= sum(f2.*p2c)*Ts;
+integralc3= sum(f3.*p3c)*Ts;

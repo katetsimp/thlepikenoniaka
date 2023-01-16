@@ -1,0 +1,30 @@
+timeconv=timeconv';
+XnoiseI=X_noise.*cos(2*pi*F0*timeconv);
+XnoiseQ=X_noise.*(-sin(2*pi*F0*timeconv));
+figure
+subplot(2,1,1);
+
+plot(timeconv,XnoiseI);
+title('XI after Gaussian noise');
+ylabel('XI');
+xlabel('Time axis');
+subplot(2,1,2);
+plot(timeconv,XnoiseQ);
+title('XQ after Gaussian noise');
+ylabel('XQ');
+xlabel('Time axis');
+Ttotalmodni= length(XnoiseI).*Ts;
+Ttotalmodnq= length(XnoiseQ).*Ts;
+PWI =(abs(fftshift(fft(XnoiseI,Nf)*Ts)).^2)/length(timeconv)*T;
+PWQ = (abs(fftshift(fft(XnoiseQ,Nf)*Ts)).^2)/length(timeconv)*T;
+figure;
+subplot(2,1,1);
+semilogy(thz, PWI);
+title('Periodogram of PXI using simiology');
+xlabel('Frequency axis');
+ylabel('PXI');
+subplot(2,1,2);
+semilogy(thz, PWQ);
+xlabel('Frequency axis');
+ylabel('PXQ');
+title('Periodogram of PXQ using simiology');
